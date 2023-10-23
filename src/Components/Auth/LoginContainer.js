@@ -6,7 +6,6 @@ const LoginContainer = ({ email, password, handleEmail, handlePassword, loading,
   return (
         <>
             <LoginSections email={email} password={password} handleEmail={handleEmail} handlePassword={handlePassword} loading={loading} press={press} onSubmit={onSubmit} />
-            <Selection titleTrue={"true"} title={"التسجيل بحساب"} state={"login"} show={"true"} linkTrue={"true"}/>
         </>
   )
 }

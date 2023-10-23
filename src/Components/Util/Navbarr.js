@@ -15,6 +15,10 @@ const Navbarr = () => {
 
   const navigate = useNavigate();
 
+  const [userAdmin, setuserAdmin] = useState('الملف الشخصي');
+
+  const [userAdminPath, setuserAdminPath] = useState('/user/profile')
+
   const [searchWord, onChangeSearch] = NavBarSearchHook();
 
   const inputRef = useRef();
@@ -30,7 +34,9 @@ const Navbarr = () => {
   useEffect(() => {
     if (localStorage.getItem("user") !== null) {
       setUser(JSON.parse(localStorage.getItem("user")));
-    }
+    }else {
+      setUser("");
+    }    
     // const getUser = async () => {
     //   await dispatch(getLoggedUser());
     //   setUser(res.data)
@@ -38,11 +44,23 @@ const Navbarr = () => {
     // getUser()
   }, [localStorage.getItem("user")])
 
+  useEffect(() => {
+    if (user) {
+      if (user.role === "admin") {
+        setuserAdmin("لوحة التحكم")
+        setuserAdminPath('/admin/addProducts')
+      }else {
+        setuserAdmin('الملف الشخصي')
+        setuserAdminPath('/user/profile')
+      }
+    }
+  }, [user])
+
   const res = useSelector(state => state.auth.loggedUser)
 
   const clickMenu = (index) => {
     if (index === 0) {
-      navigate('/user/profile')
+      navigate(userAdminPath)
     }else if (index === 1) {
       logOut();
     }
@@ -51,7 +69,7 @@ const Navbarr = () => {
   console.log(res);
 
   const arrayOptions = [
-    {title: 'الملف الشخصي'},
+    {title: userAdmin},
     {title: "تسجيل الخروج"}
   ]
 

@@ -26,6 +26,7 @@ export const LOGIN = "LOGIN";
 export const LOGGED_USER = "LOGGED_USER";
 export const FORGET_PASSWORD = "FORGET_PASSWORD";
 export const RESETE_CODE = "RESETE_CODE";
+export const RESETE_PASSWORD = "RESETE_PASSWORD";
 
 //error
 export const GET_ERROR = "GET_ERROR";
