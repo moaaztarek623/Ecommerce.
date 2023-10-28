@@ -33,7 +33,7 @@ import ResetePasswordPage from './Pages/Auth/ResetePasswordPage';
 function App() {
   return (
     <div className="font">
-        <BrowserRouter basename='/Ecommerce'>
+        <BrowserRouter>
           <Routes>
               <Route path='*' element={<PageNotFound />} />
               <Route path='/' element={<HomePage />} />

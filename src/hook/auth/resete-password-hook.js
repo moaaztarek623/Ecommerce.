@@ -62,7 +62,7 @@ const ResetePasswordHook = () => {
         if (res.status === 200) {
           notify("تم تغيير كلمة السر بنجاح", "success");
           setTimeout(() => {
-            navigate('/Ecommerce')
+            navigate('/')
           }, 3000);
         }else if (res.status === 404) {
             notify("هذا الايميل غير مسجل من قبل", "error");

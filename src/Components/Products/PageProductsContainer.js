@@ -33,7 +33,7 @@ const PageProductsContainer = () => {
                     loading === false ? (
                      items ?
                         items.slice(0, limit).map((item, index) => {
-                            return (<CardProduct addToCartButton={true} key={index} title={item.title} discription={item.description} price={item.price} rate={item.ratingsQuantity} img={item.imageCover} path={`/products/${item._id}`} rateTrue={true}/>)
+                            return (<CardProduct addToCartButton={true} key={index} title={item.title} discription={item.description} price={item.price} rate={item.ratingsAverage} img={item.imageCover} path={`/products/${item._id}`} rateTrue={true}/>)
                           }): <p>لا يوجد منتجات لعرضها</p>) : (<SpinnerContainer />)
                   }
             </div>

@@ -1,10 +1,15 @@
 import { baseUrl } from "../Api/baseUrl";
 
 const useInsertData = async (url, params) => {
+    
     const config = {
-        Authorization: `Bearer ${localStorage.getItem("token")}`
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`
+        }
     }
+
     const res = await baseUrl.post(url, params, config);
+
     return res;
 }
 

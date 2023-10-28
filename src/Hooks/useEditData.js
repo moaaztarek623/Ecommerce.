@@ -15,7 +15,9 @@ const useEditDataWithImage = async (url, params) => {
 const useEditData = async (url, params) => {
 
     const config = {
-        Authorization: `Bearer ${localStorage.getItem("token")}`
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`
+        }
     }
 
     const res = await baseUrl.put(url, params, config);

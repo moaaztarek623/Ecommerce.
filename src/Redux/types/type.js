@@ -28,5 +28,10 @@ export const FORGET_PASSWORD = "FORGET_PASSWORD";
 export const RESETE_CODE = "RESETE_CODE";
 export const RESETE_PASSWORD = "RESETE_PASSWORD";
 
+//review
+export const CREATE_REVIEW = "CREATE_REVIEW";
+export const GIT_ALL_REVIEW_PRODUCT = "GIT_ALL_REVIEW_PRODUCT";
+export const DELETE_REVIEW = "DELETE_REVIEW";
+
 //error
 export const GET_ERROR = "GET_ERROR";

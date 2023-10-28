@@ -74,9 +74,10 @@ const Navbarr = () => {
   ]
 
   const logOut = () => {
+    setUser("");
     localStorage.removeItem("user");
     localStorage.removeItem("token");
-    setUser("");
+    window.location.reload();
   }
 
   return (

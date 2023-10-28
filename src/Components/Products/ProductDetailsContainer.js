@@ -25,7 +25,7 @@ const ProductDetailsContainer = () => {
             <ProductsGallery  />
             <ProductTextsDetails price={price} item={item} title={item.title} catName={catName} brandName={brandName} />
         </div>
-        <RateContainer />
+        <RateContainer rateResults={item.ratingsQuantity} rateQty={item.ratingsAverage} />
         <div className='pb-[8rem]'>
             <HomeProducts sub_title={"منتجات قد تعجبك"} items={productLikeItem} loading={loadingProduct} />
         </div>

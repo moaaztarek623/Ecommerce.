@@ -35,7 +35,7 @@ const CardProduct = ({ discription, price, rate, img, path, rateTrue, chil, titl
             </div>
             <div>
                 <div className="flex items-center justify-between !p-2">
-                    <Typography color="blue-gray" className="flex items-center gap-1 font-extrabold">
+                    <Typography color="blue-gray" className="text-yellow-700 flex items-center gap-1 font-extrabold">
                     <AiTwotoneStar className="text-yellow-700 text-2xl"/>
                         {rate}
                     </Typography>
