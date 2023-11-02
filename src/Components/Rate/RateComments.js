@@ -6,12 +6,35 @@ import { Button, Dialog, DialogHeader, DialogBody, DialogFooter, Spinner } from 
 import DeleteReviewHook from '../../hook/review/delete-review-hook';
 import { ToastContainer } from 'react-toastify';
 import { useParams } from 'react-router';
+import EditReviewHook from '../../hook/review/edit-review-hook';
+import ReactStars from "react-rating-stars-component";
+import { AiFillStar } from "react-icons/ai"; 
+import { BsStarHalf } from "react-icons/bs"; 
+import { AiOutlineStar } from "react-icons/ai"; 
 
 const RateComments = ({ allReview, onPress }) => {
 
     const {id} = useParams();
 
-    const [open, handleOpen, loadingRemove, handleRemoveComment, user] = DeleteReviewHook(id)
+    const [open, handleOpen, loadingRemove, handleRemoveComment, user] = DeleteReviewHook(id);
+
+    const [openEdit, handleOpenEdit, loadingEdit, handleEditComment, newRateText, handleNewRateText, onChangeNewRateValue, newRateValue] = EditReviewHook(id);
+
+    const setting = {
+        size: 22,
+        count: 5,
+        color: "#979797",
+        activeColor: "#ffc107",
+        value: newRateValue,
+        a11y: true,
+        isHalf: true,
+        emptyIcon: <AiOutlineStar />,
+        halfIcon: <BsStarHalf />,
+        filledIcon: <AiFillStar />,
+        onChange: newValue => {
+          onChangeNewRateValue(newValue)
+        }
+    };
 
   return (
     <div className="flex flex-col gap-2 pt-0">
@@ -34,6 +57,29 @@ const RateComments = ({ allReview, onPress }) => {
             </Button>
             </DialogFooter>
         </Dialog>
+        <Dialog open={openEdit} handler={handleOpenEdit} size='xs'>
+            <DialogHeader>تعديل التقييم</DialogHeader>
+            <DialogBody divider className='flex flex-col gap-3'>
+                <div className="flex gap-1 items-center">
+                    <ReactStars { ...setting } />
+                    <span>{newRateValue}</span>
+                </div>
+                <input className="flex border border-gray-300 focus:border-gray-600 rounded-lg px-3 py-2 placeholder:text-sm w-full" placeholder='محتوى التقييم...' onChange={handleNewRateText} value={newRateText} />
+            </DialogBody>
+            <DialogFooter className='flex justify-between items-center'>
+            <Button
+                variant="text"
+                color="gray"
+                onClick={handleOpenEdit}
+                className="mr-1"
+            >
+                <span>الغاء</span>
+            </Button>
+            <Button className="flex items-center gap-1 justify-center hover:!shadow-none hover:bg-opacity-90 border border-gray-300 rounded-lg" color="green" onClick={handleEditComment}>
+                {loadingEdit === true ? <span className='flex gap-1 items-center'>جاري التعديل <Spinner color='gray'/></span> : <span>تاكيد التعديل</span>}
+            </Button>
+            </DialogFooter>
+        </Dialog>
         {
             allReview && allReview.data ? allReview.data.map((item, index) => {
                 return (
@@ -41,7 +87,7 @@ const RateComments = ({ allReview, onPress }) => {
                         <RateTitle title={item.user.name} rateQty={item.rating} classTitle={"text-[0.9rem] text-gray-600"} reviewsCount={"no"}/>
                         <div className='flex items-center gap-3 justify-between'>
                             <p>{item.review}</p>
-                            {user._id === item.user._id ? <EditRemove onClickRemove={()=>handleOpen(item._id)} /> : null}
+                            {user._id === item.user._id ? <EditRemove onClickRemove={()=>handleOpen(item._id)} onClickEdit={()=>handleOpenEdit(item)} /> : null}
                         </div>
                     </div>
                 )

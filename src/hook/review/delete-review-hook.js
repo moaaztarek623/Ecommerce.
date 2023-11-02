@@ -38,6 +38,8 @@ const DeleteReviewHook = (id) => {
     if (loadingRemove === false) {
         if (res === "") {
             notify("تم حذف التقييم بنجاح", "success");
+        }else {
+            notify("هناك مشكلة في عملية الحذف", "error");
         }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

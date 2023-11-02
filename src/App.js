@@ -29,6 +29,7 @@ import AdminEditProdcutPage from './Pages/Admin/AdminEditProdcutPage';
 import ForgetPasswordPage from './Pages/Auth/ForgetPasswordPage';
 import ReseteCodePage from './Pages/Auth/ReseteCodePage';
 import ResetePasswordPage from './Pages/Auth/ResetePasswordPage';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   return (
@@ -66,6 +67,7 @@ function App() {
               <Route path="/user/profile" element={<UserProfilePage />} />
           </Routes>
         </BrowserRouter>
+        <ToastContainer />
     </div>
   );
 }

@@ -84,7 +84,7 @@ const AllProductsContainer = () => {
                  <Paginations classPagination={"py-0"} pageCount={pagination.numberOfPages} onPress={onPress} param={param} />
                 <div className= "grid gap-4 grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 basis-full justify-center w-full">
                     {loading === false ? items ? items.map((item, index) => {
-                        return (<CardProduct pathEdit={`/admin/editProduct/${item._id}`} onClickRemove={() => {handleOpen(); settitleRemove(item.title); setIdRemove(item._id); setindex(index)}} key={index} pointer={false} title={item.title} discription={item.description} price={item.price} rate={item.ratingsAverage} img={item.imageCover} rateTrue={false} chil={"moaaz"} path={`/products/${item._id}`} />)
+                        return (<CardProduct item={item} pathEdit={`/admin/editProduct/${item._id}`} onClickRemove={() => {handleOpen(); settitleRemove(item.title); setIdRemove(item._id); setindex(index)}} key={index} pointer={false} title={item.title} price={item.price} rate={item.ratingsAverage} img={item.imageCover} rateTrue={false} chil={"moaaz"} path={`/products/${item._id}`} />)
                     }) : <h1>لم يتم اضافة منتجات </h1> : <SpinnerContainer />}
                  </div>
             </div>

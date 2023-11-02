@@ -13,7 +13,7 @@ const HomeProducts = ({ sub_title, items, loading }) => {
               loading === false ? (
                 items ? 
                   items.slice(0, 4).map((item, index) => {
-                  return (<CardProduct key={index} title={item.title} discription={item.description} price={item.price} img={item.imageCover} path={`/products/${item._id}`} rateTrue={true} rate={item.ratingsQuantity} priceBefore={item.priceBefore} />)
+                  return (<CardProduct item={item} key={index} title={item.title} price={item.price} img={item.imageCover} path={`/products/${item._id}`} rateTrue={true} rate={item.ratingsQuantity} priceBefore={item.priceBefore} />)
                 })
                : null) : (<div className='w-full flex items-center justify-center gap-1'>
                   <Spinner color='gray' className="h-8 w-8 text-gray-900" />

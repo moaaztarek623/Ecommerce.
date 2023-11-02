@@ -1,9 +1,10 @@
-import { CREATE_REVIEW, DELETE_REVIEW, GIT_ALL_REVIEW_PRODUCT } from '../types/type';
+import { CREATE_REVIEW, DELETE_REVIEW, EDIT_REVIEW, GIT_ALL_REVIEW_PRODUCT } from '../types/type';
 
 const initial = {
     createReview: [],
     allReview: [],
     deleteReview: [],
+    editReview: [],
     load: true
 };
 
@@ -25,6 +26,12 @@ const reviewReducer = (state = initial, action) => {
             return {
                 ...state,
                 deleteReview: action.payload,
+                load: false
+            }      
+        case EDIT_REVIEW:
+            return {
+                ...state,
+                editReview: action.payload,
                 load: false
             }      
         default:
