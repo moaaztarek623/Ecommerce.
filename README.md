@@ -2,10 +2,7 @@
 
 the big project Ecommerce website more pages (20)
 
-### admin-page
-### user-page
-
-with react js and tailwind 
+with react.js and tailwind.css
 
 *- Moaaz tarek 
 
